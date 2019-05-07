@@ -32,7 +32,7 @@ var gameover=document.getElementById("sound-gameover");
     if (!(bIsIpad || bIsIphoneOs || bIsMidp || bIsUc7 || bIsUc || bIsAndroid || bIsCE || bIsWM)) {
         alert("检测到为PC浏览\n打开影响式设计模式（Ctrl+Shift+M ）正常浏览（最好选iphone X/XS）")
     }
-    
+
 /*
  创建飞机类
  */
@@ -218,8 +218,8 @@ var bianjie=function(){
 
 
 
-    
-  
+
+
     if(bodyobjX<0||bodyobjX>dW||bodyobjY<0||bodyobjY>dH){
         if(document.removeEventListener){
             mainDiv.removeEventListener("touchstart",yidong,true);
@@ -302,7 +302,7 @@ function start(){
     if(mark==20){
         mark1++;
         //中飞机
-        if(mark1%5==0){         
+        if(mark1%5==0){
             enemys.push(new enemy(6,25,window.innerWidth-25,46,60,5000,360,random(1,3),"image/中飞机爆炸.gif","image/enemy3_fly_1.png"));
         }
         //大飞机
@@ -379,7 +379,7 @@ function start(){
                   if(enemys[j].imagenode.offsetTop+enemys[j].plansizeY>=selfplan.imagenode.offsetTop+40&&enemys[j].imagenode.offsetTop<=selfplan.imagenode.offsetTop-20+selfplan.plansizeY){
                       //碰撞本方飞机，游戏结束，统计分数
                       selfplan.imagenode.src="image/本方飞机爆炸.gif";
-                      this.gameover.play();
+                      this.gameover.pause();
                       enddiv.style.display="block";
                       planscore.innerHTML=scores;
                       if(document.removeEventListener){
@@ -390,7 +390,7 @@ function start(){
                           mainDiv.detachEvent("ontouchstart",yidong);
                           bodyobj.removeEventListener("touchstart",bianjie,true);
                       }
-                      
+
                       clearInterval(set);
                   }
                 }
@@ -428,6 +428,7 @@ function begin(){
     mainDiv.style.display="block";
     selfplan.imagenode.style.display="block";
     scorediv.style.display="block";
+    this.gameover.play();
     /*
      调用开始函数
      */
